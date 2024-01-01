@@ -1,7 +1,8 @@
-Enter file contents hereint sensorValue;
+int sensorValue;
 int sensorLow = 1023;
 int sensorHigh = 0;
 const int ledPin = 13;
+
 void setup() {
 pinMode(ledPin, OUTPUT); 
 digitalWrite(ledPin, HIGH);
@@ -16,6 +17,7 @@ if (sensorValue < sensorLow) {
 }
 digitalWrite(ledPin, LOW);
 }
+
 void loop() {
  sensorValue = analogRead(A0);
 int pitch =
