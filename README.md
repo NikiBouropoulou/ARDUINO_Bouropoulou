@@ -7,3 +7,5 @@ Code1
 https://www.tinkercad.com/things/6Lqxw4HExzS
 Code2
 https://www.tinkercad.com/things/3pk1yqWZbj7
+Code3
+https://www.tinkercad.com/things/gpK3H02pRsM-photoresistor-test
