@@ -1,22 +1,22 @@
-int irRecvPin = 12;   // Ο ακροδέκτης που συνδέθηκε ο δέκτης υπερύθρων
-unsigned long bitTime;  // Ο χρόνος που διήρκησε το bit σε μsec
-unsigned long  codeValue;  // Ο κώδικας που μεταδόθηκε
+int irRecvPin = 12;   
+unsigned long bitTime;  
+unsigned long  codeValue;  
 
 void setup()
 {
-  pinMode(irRecvPin, INPUT);  // Είσοδος για τις υπέρυθρες
-  Serial.begin(9600);  // Στέλνουμε στην σειριακή τους κωδικούς πλήκτρων
+  pinMode(irRecvPin, INPUT);  
+  Serial.begin(9600);  
 }
 void loop()
 {
-  bitTime = pulseIn(irRecvPin, LOW);  // Εχουμε start bit ;
+  bitTime = pulseIn(irRecvPin, LOW);  
   if (bitTime > 3000) {
-    codeValue = 0;        // Αν ναι
-    for(int i = 0; i < 32; i++) { // διαβάζουμε και τα 32 bit
-      bitTime = pulseIn(irRecvPin, HIGH); // η διάρκεια του “space”
-    if (i > 15 && i < 24) // To 3o byte έχει τον κωδικό πλήκτρου
-      if(bitTime > 1000)  // Είναι "1";
-        codeValue |= (1 << (i-16)); // ΄Θέσε "1" στο κατάλληλο bit
+    codeValue = 0;        
+    for(int i = 0; i < 32; i++) {
+      bitTime = pulseIn(irRecvPin, HIGH);
+    if (i > 15 && i < 24) 
+      if(bitTime > 1000)  
+        codeValue |= (1 << (i-16)); 
     }  
     Serial.println(codeValue,HEX); Serial.flush();  
   if (codeValue==12) noTone;
